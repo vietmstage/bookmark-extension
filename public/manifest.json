@@ -6,8 +6,12 @@
     "default_popup": "index.html",
     "default_title": "React Ext"
   },
+  "background": {
+    "scripts": ["background.js"]
+  },
   "permissions": [
-    "tabs"
+    "tabs",
+    "activeTab"
   ],
   "version": "1.0"
 }

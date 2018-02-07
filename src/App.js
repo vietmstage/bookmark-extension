@@ -1,24 +1,37 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
 
+  state = {
+    currentTab: ''
+  }
+
+
+  componentDidMount() {
+    this.getTab()
+  }
+
+
   getTab = () => {
-    if(chrome.tabs) {
-      // chrome.tabs.create({url: 'http://google.com'}, function () {})
-      // const query = { active: true, currentWindow: true };
-      // return 'meo len cmn'
-      chrome.tabs.getSelected(0, function(tabs) {
-        return 'meo len cmn'
+    let currentTab
+    if (chrome.tabs) {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        currentTab = tabs[0].url
+        this.setState({currentTab})
       })
-      // return JSON.stringify(chrome.tabs)
     } else {
-      return window.location.toString()
+      currentTab =  window.location.toString()
+      this.setState({currentTab})
     }
   }
+
   render() {
-    console.log('thi ddfsfsdfs;lfm')
+    const {currentTab} = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -26,7 +39,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div className="App-intro">
-          <p>{this.getTab()}</p>
+          <p>{currentTab}</p>
           <p>123</p>
           To get started, edit <code>src/App.js</code> and save to reload.
         </div>
