@@ -7,11 +7,13 @@
     "default_title": "React Ext"
   },
   "background": {
-    "scripts": ["background.js"]
+    "page": "background.html"
   },
   "permissions": [
     "tabs",
-    "activeTab"
+    "background",
+    "storage",
+    "history"
   ],
   "version": "1.0"
 }
