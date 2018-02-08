@@ -34,6 +34,22 @@ class App extends Component {
     }
   }
 
+  _handleLogin = (e) => {
+    e.preventDefault()
+    console.log('chỏm', chrome)
+    chrome.storage.sync.set({'tokenXXX': 'this_is_token_code'}, () => {
+
+    })
+  }
+
+  _handleViewToken = e => {
+    e.preventDefault()
+    chrome.storage.sync.get('tokenXXX', function(result) {
+      // this.setState({result})
+      console.log('asasdd;,', result)
+    })
+  }
+
   render() {
     const {currentTab} = this.state
     return (
@@ -44,7 +60,9 @@ class App extends Component {
         </header>
         <div className="App-intro">
           <p>{currentTab}</p>
-          <p>123</p>
+          <button onClick={this._handleLogin}>click</button>
+          <button onClick={this._handleViewToken}>view token</button>
+          <p>{this.state.result}</p>
           To get started, edit <code>src/App.js</code> and save to reload.
         </div>
       </div>
