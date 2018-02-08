@@ -23,6 +23,10 @@ class App extends Component {
       }, tabs => {
         currentTab = tabs[0].url
         this.setState({currentTab})
+        chrome.storage.sync.set({'page': currentTab}, function() {
+          // Notify that we saved.
+          console.log('Settings saved')
+        });
       })
     } else {
       currentTab =  window.location.toString()
