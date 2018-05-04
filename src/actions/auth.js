@@ -15,3 +15,17 @@ export const login = (email, password) => {
     return result
   })
 }
+
+export const bookmark = (data) => {
+  return axios({
+    method: 'POST',
+    url: 'http://hasbrain-api.mstage.io/bookmark',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-hasbrain-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhYjMzNzI1ZTZlOTFlMGNlMDk4OWRlNCIsImlhdCI6MTUxNjIzOTAyMn0.anJXLAhnRxz37NxmiKtzk76KBZCH1RQXV1DuQCy1wMc'
+    },
+    data
+  }).then(result => {
+    return result
+  })
+}

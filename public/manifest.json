@@ -1,20 +1,27 @@
 {
-  "short_name": "React App",
-  "name": "React Extension",
+  "short_name": "hasBrain bookmark",
+  "name": "hasBrain bookmark",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "React Ext",
+    "default_title": "hasBrain bookmark Ext",
     "default_icon": "icon.png"
   },
-  "background": {
-    "page": "background.html"
-  },
+  //  "background": {
+  //    "page": "background.html"
+  //  },
   "permissions": [
     "tabs",
-    "background",
+    //    "background",
     "storage",
-    "history"
+    //    "history",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    { "run_at" :"document_end",
+      "matches": ["<all_urls>"],
+      "js": ["axios.js", "jquery.js","highlight.js"],
+      "css":["mycss.css"] }
   ],
   "version": "1.0"
 }
